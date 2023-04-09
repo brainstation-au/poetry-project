@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  sh: &base
+    image: python:3.10-buster
+    volumes:
+      - .:/opt/code
+    working_dir: /opt/code
+    command: bash
+
+  new-project:
+    <<: *base
+    environment:
+      - PROJECT_NAME=aws-cdk-python
+    command: ./new-project.sh

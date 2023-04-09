@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  bash: &base
+    build: .
+    volumes:
+      - .:/opt/code
+    working_dir: /opt/code
+    command: bash
+
+  install:
+    <<: *base
+    command: poetry install
+
+  test:
+    <<: *base
+    command: poetry run pytest
+
+  lint:
+    <<: *base
+    command: bash -c "find src -type f -name \"*.py\" | xargs pylint"
