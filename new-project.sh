@@ -6,7 +6,6 @@ curl -sSL https://install.python-poetry.org | python3 -
 export PATH="/root/.local/bin:$PATH"
 
 rm -rf $PROJECT_NAME
-
 poetry new $PROJECT_NAME
 
 cd $PROJECT_NAME
@@ -18,3 +17,5 @@ cp -r ../assets/. .
 
 pylint --generate-rcfile > ./.pylintrc
 echo -e "\n[CUSTOM]\n\ndisable=missing-module-docstring,missing-function-docstring" >> ./.pylintrc
+
+rm -rf ./.venv

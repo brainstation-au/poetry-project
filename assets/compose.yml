@@ -7,6 +7,10 @@ services:
     working_dir: /opt/code
     command: bash
 
+  venv:
+    <<: *base
+    command: bash -c "rm -rf ./.venv && python -m venv ./.venv && poetry install"
+
   install:
     <<: *base
     command: poetry install
